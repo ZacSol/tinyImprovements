@@ -10,11 +10,11 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect('mongodb://localhost/noteApp', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/tinyImprovements', { useNewUrlParser: true });
 
 
 require('./routes/apiRoutes')(app);
-
+require('./routes/htmlRoutes')(app);
 
 app.listen(PORT, function() {
   console.log(`App running on port ${PORT}`);
