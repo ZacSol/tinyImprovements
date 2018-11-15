@@ -1,0 +1,27 @@
+/* Elements */
+img{
+    max-height: 450px;
+}
+h1{
+    font-size: 3.5rem;
+}
+
+/* Classes */
+.btn{
+    margin-bottom:4px;
+    margin-top:4px;
+}
+.spicyRice{
+    font-family: 'Spicy Rice', cursive;
+}
+
+/* IDs */
+#startBtn{
+    margin-top:0px;
+    margin-bottom: 8px;
+}
+#grad {
+    background-image: radial-gradient(red, yellow, green);
+    height: 100vh;
+    background-attachment: fixed;
+  }
