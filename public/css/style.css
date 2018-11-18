@@ -25,3 +25,9 @@ h1{
     height: 100vh;
     background-attachment: fixed;
   }
+#userTitle{
+    margin-bottom: 5px;
+}
+#messagesHere{
+    text-align: center;
+}

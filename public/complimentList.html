@@ -21,9 +21,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form action="POST">
-    
+                    <div class="modal-body" id="complimentModalBody">
+                        <div id="dropdownsHere">
+                                <div id="sendToDiv"></div>
+                                <div id="sentFromDiv"></div>        
+                        </div>
+                        <form id="messagesHere">
+                            <input type="text" placeholder="Enter a title." id="userTitle"><br>
+                            <textarea rows="3" cols="50" placeholder="Enter message here." id="userMessage"></textarea>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -65,9 +70,7 @@
                     <button class="btn btn-secondary" data-toggle="modal" data-target="#complimentModal">Compliment Someone</button>
                 </div>
             </div>
-            <div class="col-9">
-                <div id="complimentsDump"></div>
-            </div>
+            <div class="col-9 text-center" id="complimentsDump"></div>
         </div>
 
     </div>

@@ -1,6 +1,8 @@
 // // variables
 const complimentsDump=$("#complimentsDump");
 const newName=$("#newName");
+const toDropdown=$("#sendToDiv");
+const fromDropdown=$("#sentFromDiv");
 
 
 // // functions
@@ -11,15 +13,50 @@ function getData(type) {
             // console.log(response);
             if(type==="posts"){
                 render(response);
+            }
+            else if(type==="users"){
+                renderUsers(response);
             };
         });
 };
 // renders compliments
 function render(arrayOfObjects){
+    complimentsDump.empty();
     // console.log(arrayOfObjects)
+    arrayOfObjects.reverse();
     arrayOfObjects.forEach(function(item){
         console.log(item);
+
+        let complimentCard=
+        `<div class="card">
+            <div class="card-body">
+                <div class="container">
+                    <div id="row">
+                        <div id="col-3">To:${item.userTo}</div>
+                        <div id="col-6"><h4 class="card-title">${item.title}</h4></div>
+                        <div id="col-3">From:${item.userFrom}</div>
+                    </div>
+                </div>
+                <p class="card-text">${item.body}</p>
+            </div>
+        </div>`
+        
+        complimentsDump.append(complimentCard);
     });
+};
+function renderUsers(userArr){
+    toDropdown.empty();
+    fromDropdown.empty();
+    let userDropdownList="";
+    userArr.forEach(function(user){
+        // console.log(user.name);
+        userDropdownList+=
+        `<option>${user.name}</option>`
+    });
+    userDropdownList=`<option disabled selected>Select a user</option>${userDropdownList}`;
+    console.log(userDropdownList);
+    toDropdown.append(`<label for="sendTo">To: </label><select id=sendTo>${userDropdownList}</select>`);
+    fromDropdown.append(`<label for="sentFrom">From: </label><select id=sendTo>${userDropdownList}</select>`);
 };
 // sends data to server
 function postData(type,newObject){
@@ -27,6 +64,8 @@ function postData(type,newObject){
         // console.log(res);
         if(res.error){
             alert("There was a problem sending the data.");
+        }else{
+            getData("posts");
         };
     });
 };
