@@ -3,6 +3,8 @@ const complimentsDump=$("#complimentsDump");
 const newName=$("#newName");
 const toDropdown=$("#sendToDiv");
 const fromDropdown=$("#sentFromDiv");
+const sendTo=$("#sendTo");
+const sentFrom=$("#sentFrom");
 
 
 // // functions
@@ -31,10 +33,10 @@ function render(arrayOfObjects){
         `<div class="card">
             <div class="card-body">
                 <div class="container">
-                    <div id="row">
-                        <div id="col-3">To:${item.userTo}</div>
-                        <div id="col-6"><h4 class="card-title">${item.title}</h4></div>
-                        <div id="col-3">From:${item.userFrom}</div>
+                    <div class="row">
+                        <div class="col-3">To:${item.userTo}</div>
+                        <div class="col-6"><h4 class="card-title">${item.title}</h4></div>
+                        <div class="col-3">From:${item.userFrom}</div>
                     </div>
                 </div>
                 <p class="card-text">${item.body}</p>
@@ -66,10 +68,13 @@ function postData(type,newObject){
             alert("There was a problem sending the data.");
         }else{
             getData("posts");
+            getData("users");
         };
     });
 };
-
+function validateCompliment(){
+    console.log(sendTo.val());
+}
 
 // // event handlers
 $("#postNameBtn").click(function (e) {
@@ -87,6 +92,7 @@ $("#postNameBtn").click(function (e) {
 $("#postComplimentBtn").click(function(e){
     e.preventDefault();
     // console.log("Posting Compliment");
+    validateCompliment();
 });
 
 // // autoRun
