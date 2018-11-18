@@ -1,11 +1,10 @@
 // // variables
 const complimentsDump=$("#complimentsDump");
 const newName=$("#newName");
-const toDropdown=$("#sendToDiv");
-const fromDropdown=$("#sentFromDiv");
-const sendTo=$("#sendTo");
-const sentFrom=$("#sentFrom");
-
+const complimentTitle=$("#userTitle");
+const complimentMessage=$("#userMessage");
+const x = $("#sendToUsers");
+const y = $("#sentFromUsers");
 
 // // functions
 // gets data from server
@@ -27,16 +26,16 @@ function render(arrayOfObjects){
     // console.log(arrayOfObjects)
     arrayOfObjects.reverse();
     arrayOfObjects.forEach(function(item){
-        console.log(item);
+        // console.log(item);
 
         let complimentCard=
         `<div class="card">
             <div class="card-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-3">To:${item.userTo}</div>
-                        <div class="col-6"><h4 class="card-title">${item.title}</h4></div>
-                        <div class="col-3">From:${item.userFrom}</div>
+                        <div class="col">To:${item.userTo}</div>
+                        <div class="col"><h4 class="card-title">${item.title}</h4></div>
+                        <div class="col">From:${item.userFrom}</div>
                     </div>
                 </div>
                 <p class="card-text">${item.body}</p>
@@ -46,19 +45,23 @@ function render(arrayOfObjects){
         complimentsDump.append(complimentCard);
     });
 };
+function addName(name){
+    let newOption=document.createElement("option");
+    newOption.text=`${name}`;
+    newOption.value=`${name}`;
+    let newOptionA=document.createElement("option");
+    newOptionA.text=`${name}`;
+    newOptionA.value=`${name}`;
+    // console.log(newOption);
+    x.append(newOption);
+    y.append(newOptionA);
+}
 function renderUsers(userArr){
-    toDropdown.empty();
-    fromDropdown.empty();
-    let userDropdownList="";
     userArr.forEach(function(user){
         // console.log(user.name);
-        userDropdownList+=
-        `<option>${user.name}</option>`
+        addName(user.name);
     });
-    userDropdownList=`<option disabled selected>Select a user</option>${userDropdownList}`;
-    console.log(userDropdownList);
-    toDropdown.append(`<label for="sendTo">To: </label><select id=sendTo>${userDropdownList}</select>`);
-    fromDropdown.append(`<label for="sentFrom">From: </label><select id=sendTo>${userDropdownList}</select>`);
+    // console.log(x);
 };
 // sends data to server
 function postData(type,newObject){
@@ -67,13 +70,27 @@ function postData(type,newObject){
         if(res.error){
             alert("There was a problem sending the data.");
         }else{
+            $(".modal").modal("hide");
             getData("posts");
-            getData("users");
         };
     });
 };
 function validateCompliment(){
-    console.log(sendTo.val());
+    // console.log(complimentTitle.val().trim());
+    // console.log(complimentMessage.val().trim());
+    // checks if input boxes are empty and select boxes are selected
+    if(!complimentTitle.val()||!complimentMessage.val()||!x.val()||!y.val()){
+        alert("Please fill out all fields.");
+    }else{
+        // data in all fields
+        let objectToPost={
+            userTo:x.val(),
+            userFrom:y.val(),
+            title:complimentTitle.val().trim(),
+            body:complimentMessage.val().trim()
+        };
+        postData('posts',objectToPost);
+    }
 }
 
 // // event handlers
@@ -86,6 +103,7 @@ $("#postNameBtn").click(function (e) {
         let newUser = { name: newName.val().trim() }
         // console.log(newUser);
         postData("users", newUser);
+        addName(newName.val().trim())
         $(".modal").modal("hide");
     };
 });
