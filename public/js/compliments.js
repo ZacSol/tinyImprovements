@@ -40,7 +40,7 @@ function render(arrayOfObjects){
                 </div>
                 <p class="card-text">${item.body}</p>
             </div>
-        </div>`
+        </div><br>`
         
         complimentsDump.append(complimentCard);
     });
