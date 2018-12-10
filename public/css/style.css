@@ -20,6 +20,9 @@ h1{
     top: 0;
     z-index: 250;
 }
+.usersCol{
+    padding: 0px 30px;
+}
 
 /* IDs */
 #startBtn{

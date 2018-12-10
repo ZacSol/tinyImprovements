@@ -27,13 +27,13 @@
                             <div class="container">
                                    
                                 <div class="row">
-                                    <div class="col">
-                                        <label>To: </label>
+                                    <div class="col-6 usersCol">
+                                        <label>To:<br/></label>
                                          <select  id="sendToUsers">
                                             <option disabled selected>Select a user</option>
                                     </select>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-6 usersCol">
                                         <label>From: </label>
                                         <select id="sentFromUsers">
                                                 <option disabled selected>Select a user</option>
@@ -43,6 +43,7 @@
                             </div>
                         </div>
                         <form id="messagesHere">
+                            <br/>
                             <input type="text" placeholder="Enter a title." id="userTitle"><br>
                             <textarea rows="3" cols="50" placeholder="Enter message here." id="userMessage"></textarea>
                         </form>
