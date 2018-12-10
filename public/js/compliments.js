@@ -55,6 +55,7 @@ function addName(name){
     // console.log(newOption);
     x.append(newOption);
     y.append(newOptionA);
+    newName.val("");
 }
 function renderUsers(userArr){
     userArr.forEach(function(user){
