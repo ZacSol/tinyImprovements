@@ -91,6 +91,8 @@ function validateCompliment(){
             body:complimentMessage.val().trim()
         };
         postData('posts',objectToPost);
+        complimentTitle.val("");
+        complimentMessage.val("");
     }
 }
 
