@@ -25,6 +25,7 @@ h1{
 }
 .width80{
     width: 80%;
+    margin-top: 6px;
 }
 
 /* IDs */
@@ -37,11 +38,9 @@ h1{
     height: 100vh;
     background-attachment: fixed;
   }
-#userTitle{
-    margin-bottom: 5px;
-}
 #messagesHere{
     text-align: center;
+    padding: 1px;
 }
 #complimentsDump{
     margin: auto;
