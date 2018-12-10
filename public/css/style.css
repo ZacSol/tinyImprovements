@@ -23,6 +23,9 @@ h1{
 .usersCol{
     padding: 0px 30px;
 }
+.width80{
+    width: 80%;
+}
 
 /* IDs */
 #startBtn{

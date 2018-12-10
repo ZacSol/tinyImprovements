@@ -25,27 +25,30 @@
                     <div class="modal-body" id="complimentModalBody">
                         <div id="dropdownsHere">
                             <div class="container">
-                                   
                                 <div class="row">
-                                    <div class="col-6 usersCol">
-                                        <label>To:<br/></label>
-                                         <select  id="sendToUsers">
-                                            <option disabled selected>Select a user</option>
-                                    </select>
-                                    </div>
-                                    <div class="col-6 usersCol">
-                                        <label>From: </label>
-                                        <select id="sentFromUsers">
+                                    <div class="col-6">
+                                        <div class="col-sm-12 col-md-6">To:</div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <select id="sendToUsers">
                                                 <option disabled selected>Select a user</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="col-sm-12 col-md-6">From:</div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <select id="sentFromUsers">
+                                                <option disabled selected>Select a user</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <form id="messagesHere">
                             <br/>
-                            <input type="text" placeholder="Enter a title." id="userTitle"><br>
-                            <textarea rows="3" cols="50" placeholder="Enter message here." id="userMessage"></textarea>
+                            <input type="text" placeholder="Enter a title." class="width80" id="userTitle"><br>
+                            <textarea class="width80" rows="3" placeholder="Enter message here." id="userMessage"></textarea>
                         </form>
                     </div>
                     <div class="modal-footer">
