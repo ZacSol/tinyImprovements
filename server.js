@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect('mongodb://localhost/tinyImprovements', { useNewUrlParser: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/tinyImprovements";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
 require('./routes/apiRoutes')(app);
